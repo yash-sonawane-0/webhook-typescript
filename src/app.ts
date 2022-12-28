@@ -1,4 +1,5 @@
 import express from "express";
+import { bigint } from "zod";
 require('dotenv').config(); // good practice to keep secret here
 const { db } = require("./config/config");
 
@@ -16,31 +17,32 @@ app.get("/", (req, res) => {
 app.post("/webhook/listen", async (req, res) => {
     console.log("Inside webhook/listen");
     let body_param = req.body;
-    if (body_param.object) { // if it has something
-        let thread = body_param.data.object.thread;
-        let id = body_param.data.object.id;
-        let member = body_param.member;
-        let body = body_param.data.object.text;
-        let createdAt = body_param.created_at;
-        let media = body_param.data.object.attachments;
+    console.log(body_param);
+    // if (body_param.object) { // if it has something
+    //     let thread = body_param.data.object.thread;
+    //     let id = body_param.data.object.id;
+    //     let member = body_param.member;
+    //     let body = body_param.data.object.text;
+    //     let createdAt = body_param.created_at;
+    //     let media = body_param.data.object.attachments;
 
-        const snapshot = db.collection('Tokens').doc(member);
-        const doc = await snapshot.get();
-        if (!doc.exists) {
-            console.log('No such document in Firebase!!');
-        } else {
-            console.log("Thread : body -> " + thread + " : " + body);
+    //     const snapshot = db.collection('Tokens').doc(member);
+    //     const doc = await snapshot.get();
+    //     if (!doc.exists) {
+    //         console.log('No such document in Firebase!!');
+    //     } else {
+    //         console.log("Thread : body -> " + thread + " : " + body);
 
-            let token = doc.data().Token;
+    //         let token = doc.data().Token;
 
-            if (member === body_param.data.object.sender) { // dont send notification for user's own messages
-            } else {
-                console.log("User token is : " + token);
-            }
-        }
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(200);
-    }
+    //         if (member === body_param.data.object.sender) { // dont send notification for user's own messages
+    //         } else {
+    //             console.log("User token is : " + token);
+    //         }
+    //     }
+    //     res.sendStatus(200);
+    // } else {
+    //     res.sendStatus(200);
+    // }
 
 });
