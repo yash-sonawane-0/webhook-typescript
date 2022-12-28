@@ -1,8 +1,9 @@
 const firebase = require("firebase-admin");
+require('dotenv').config();
 
 export const config = {
     firebaseConfig: {
-        apiKey: "AIzaSyBAqy4p1yatL4Ksk5kJ9bxxqS8m2EJimEs",
+        apiKey: process.env.FirebaseApiKey,
         authDomain: "allara-staging.firebaseapp.com",
         projectId: "allara-staging",
         storageBucket: "allara-staging.appspot.com",
