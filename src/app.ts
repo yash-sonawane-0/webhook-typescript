@@ -1,6 +1,6 @@
 import express from "express";
 require('dotenv').config(); // good practice to keep secret here
-const { db } = require("./config");
+const { db } = require("./config/config");
 
 const app = express();
 
