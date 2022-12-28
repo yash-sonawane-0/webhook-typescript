@@ -1,3 +1,5 @@
+const firebase = require("firebase");
+
 export const config = {
     firebaseConfig: {
         apiKey: "AIzaSyBAqy4p1yatL4Ksk5kJ9bxxqS8m2EJimEs",
@@ -9,3 +11,7 @@ export const config = {
         measurementId: "G-N2PDEBSJ4W"
     }
 };
+
+firebase.initializeApp(config.firebaseConfig);
+const db = firebase.firestore();
+module.exports = { db };

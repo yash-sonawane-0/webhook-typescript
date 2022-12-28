@@ -1,11 +1,6 @@
 import express from "express";
-import { initializeApp } from 'firebase/app'
-import { config } from "./config/config";
 require('dotenv').config(); // good practice to keep secret here
-const firebase = require("firebase");
-
-initializeApp(config.firebaseConfig);
-const db = firebase.firestore();
+const { db } = require("./config");
 
 const app = express();
 
