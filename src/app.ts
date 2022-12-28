@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.post("/webhook/listen", async (req, res) => {
     console.log("Inside webhook/listen");
     let body_param = req.body;
-    console.log(body_param);
+    console.log(req.body['data']['object']['id']);
     // if (body_param.object) { // if it has something
     //     let thread = body_param.data.object.thread;
     //     let id = body_param.data.object.id;
