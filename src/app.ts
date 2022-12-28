@@ -1,10 +1,12 @@
 import express from "express";
+const body_parser = require("body-parser");
 import { bigint } from "zod";
 require('dotenv').config(); // good practice to keep secret here
 const { db } = require("./config/config");
 
 const app = express();
 
+app.use(body_parser.json());
 app.listen(process.env.PORT || 8000, () => {
     console.log("App is Running");
 });
